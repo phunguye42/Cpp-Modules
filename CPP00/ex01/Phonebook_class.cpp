@@ -1,46 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Phonebook_class.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/31 03:43:04 by codespace         #+#    #+#             */
+/*   Updated: 2023/01/31 04:09:29 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Phonebook_class.hpp"
 
-void	Phonebook::display_contacts()
+void	format(std::string *data)
 {
-	std::string	exit;
-	int	i = 0;
-	while(i < 8)
-	{
-		std::cout << i + 1 << "       |";
-		std::cout << contact[i].first_name << "|";
-		std::cout << contact[i].last_name << "|";
-		std::cout << std::endl;
-		i++;
+	while (data->size() < 10)
+		data->append(" ");
+	if((*data)[9] != ' '){
+		(*data)[9] = '.';
+		(*data) = data->substr(0, 10);
 	}
-	std::cout << "EXIT: any key" << std::endl << "$: ";
+	while((*data)[9] == ' '){
+		int	i = 9;
+		while(i > 0){
+			(*data)[i] = (*data)[i - 1];
+			i--;
+		}
+		(*data)[0] = ' ';
+	}
+}
+
+void	Contact::format_fields(void)
+{
+	format(&first_name);
+	format(&last_name);
+	format(&nick_name);
+	format(&phone_number);
+	format(&darkest_secret);
+}
+
+void	Phonebook::display_contact(int	index)
+{
+	std::string exit;
+	index--;
+	if(contact[index].activated){
+		std::cout << "contact " << index + 1 << std::endl;
+		std::cout << index + 1 << "       |";
+		std::cout << contact[index].first_name << "|";
+		std::cout << contact[index].last_name << "|";
+		std::cout << contact[index].nick_name << "|";
+		std::cout << std::endl;
+	}
+	else
+		std::cout << "contact " << index + 1 << " not added" << std::endl;
+	std::cout << "EXIT: any key" << "$: ";
 	std::cin >> exit;
 }
 
-void	Phonebook::add_contact()
+void	Phonebook::add_contact(Contact *contact)
 {
 	std::cout << "type firstname: ";
 	std::cin >> contact->first_name;
-
-
 	std::cout << "type lastname: ";
 	std::cin >> contact->last_name;
-	//format(contact->last_name);
-
 	std::cout << "type nickname: ";
 	std::cin >> contact->nick_name;
-	while (contact->nick_name.size() < 10)
-		contact->nick_name.append(" ");
-
 	std::cout << "type phone number: ";
 	std::cin >> contact->phone_number;
-	while (contact->phone_number.size() < 10)
-		contact->phone_number.append(" ");
-
 	std::cout << contact->first_name << "'s darkest secret: ";
 	std::cin >> contact->darkest_secret;
-	while (contact->darkest_secret.size() < 10)
-		contact->darkest_secret.append(" ");
-	
-	while (contact->first_name.size() < 10)
-		contact->first_name.append(" ");
+	contact->format_fields();
+	contact->activated = true;
 }

@@ -1,25 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/31 03:42:44 by codespace         #+#    #+#             */
+/*   Updated: 2023/01/31 04:16:58 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Phonebook_class.hpp"
-
-void rotate_str(std::string str)
-{
-	char temp = str[9]; //here
-
-	while(str[9] == ' ')
-	{
-		for(int i = 9; i >= 0; i--)
-			str[i] = str[i - 1];
-	}
-	str[0] = temp;
-}
 
 int	main(void)
 {
 	Phonebook PB;
 	std::string	command; 
-	int			selector;
-	int			index = 0;
-	PB.index = 0;
-
+	int	selector;
+	int	index = 0;
+	
 	while(1)
 	{
 		system("clear");
@@ -29,15 +28,27 @@ int	main(void)
 		if (command == "ADD" || command == "add")
 		{
 			system("clear");
-			PB.add_contact();
+			PB.add_contact(&PB.contact[index % 8]);
 			system("clear");
 			index++;
 		}
 		if (command == "SEARCH" || command == "search")
 		{
-			system("clear");
-			PB.display_contacts();
-			system("clear");
+			std::cout << "contact number to display 1 - 8:" << std::endl << "$: ";
+			std::cin >> selector;
+			if(selector >= 0 && selector <= 8){
+				system("clear");
+				PB.display_contact(selector);
+				system("clear");
+			}
+			else
+				std::cout << "invalid selection";
+		}
+		if (command == "EXIT" || command == "exit")
+		{
+			break ;
 		}
 	}
+	std::cout << "closing Phonebook" << std::endl;
+	return(0);
 }
