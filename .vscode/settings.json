@@ -29,6 +29,12 @@
 		"iomanip": "cpp",
 		"sstream": "cpp",
 		"tuple": "cpp",
-		"utility": "cpp"
+		"utility": "cpp",
+		"deque": "cpp",
+		"unordered_map": "cpp",
+		"vector": "cpp",
+		"fstream": "cpp",
+		"functional": "cpp",
+		"optional": "cpp"
 	}
 }
