@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-void Zombie::randomChump( td::string name){
-	newZombie.name = new_name;
-	announce();
+void randomChump(std::string name){
+	Zombie  newzombie(name);
+	newzombie.announce();
 }

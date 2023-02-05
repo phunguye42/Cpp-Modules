@@ -1,12 +1,7 @@
-#include "zombie.hpp"
-
+#include "Zombie.hpp"
 
 //add zombie to heap
-Zombie* Zombie::newZombie(std::string new_name){
-	Zombie newZombie;
-
-	newZombie.name = new_name;
-	announce();
-	return(&newZombie);
+Zombie* newZombie(std::string name){
+	return(new Zombie(name));
 }
 
