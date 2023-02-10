@@ -7,9 +7,10 @@ int main(void){
 
     do
     {
-		std::cout >> "type 'exit' to exit." << std::endl;
+		std::cout << "type 'exit' to exit." << std::endl;
+		std::cout << "levels: DEBUG | INFO | WARNING | ERROR" << std::endl;
         std::cout << "Enter a level: ";
-        std::cin >> input >> std::endl;
+        std::cin >> input;
         harl.complain(input);
     } while (input.compare("exit"));
 

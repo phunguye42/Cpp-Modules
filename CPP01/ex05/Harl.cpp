@@ -10,15 +10,16 @@ void Harl::complain(std::string level){
 	t_func funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error}; //array of function pointers (addresses)
 	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int i = 0;
-	while(i < 4 && level[i].compare(level)){ //.compare returns zero if same
+	while(i < 4 && levels[i].compare(level)!=0) { //.compare returns zero if same
 		i++;
 	}
 	if(i < 4)
-		(this->*funcs[i])();
+		(this->*funcs[i])(); 
+	std::cout << std::endl;
 }
 
 //private
-void Harl::debug( void )
+void Harl::debug( void ){
 	std::cout << "love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
 }
 
