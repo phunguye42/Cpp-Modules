@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <iostream>
 #include <cmath>
 
@@ -15,4 +16,14 @@ public:
 	int toInt(void) const;
 
 
+=======
+#ifndef Fixed_HPP
+#define Fixed_HPP
+
+#include <iostream>
+
+class Fixed
+{
+	Fixed();
+>>>>>>> 6b026e80c084fb9ba8c7a7d18c88416a481f3822
 }
