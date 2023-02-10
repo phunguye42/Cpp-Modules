@@ -2,8 +2,8 @@
 class Fixed
 {
 private:
-	int _value;
-	static const int _numFractionalBits;
+	int value;
+	static const int numFractionalBits;
 
 public:
 	Fixed();
