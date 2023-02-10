@@ -1,8 +1,8 @@
 #ifndef SEDV2_HPP
 #define SEDV2_HPP
 
-#include <iostream>
-#include <fstream>
+# include <iostream>
+# include <fstream>
 
 class SedV2
 {
