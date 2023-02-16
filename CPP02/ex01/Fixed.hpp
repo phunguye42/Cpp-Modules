@@ -13,3 +13,5 @@ public:
 
 	float toFloat(void) const;
 	int toInt(void) const;
+
+}
