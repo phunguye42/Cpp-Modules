@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <iostream>
 #include <cmath>
 
@@ -24,10 +23,6 @@ public:
 
 class Fixed
 {
-private:
-	int _value;
-	static const int _numFractionalBits;
-
-public:
 	Fixed();
+>>>>>>> 6b026e80c084fb9ba8c7a7d18c88416a481f3822
 }
