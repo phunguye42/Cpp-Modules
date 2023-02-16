@@ -17,7 +17,7 @@ public:
 	~Harl();
 
 	void complain(std::string level);
-}
+};
 
 //declares a type t_func that points to a function in Harl:: namespace
 //that returns void and has void parameters
