@@ -51,65 +51,65 @@ std::ostream&   operator<<(std::ostream &o, Fixed const &rhs)
     return o;
 }
 
-bool    operator>(const Fixed &rhs) const {
+bool    Fixed::operator>(const Fixed &rhs) const {
 	return(_fixedPointValue > rhs.getRawBits());
 }
 
-bool    operator<(const Fixed &rhs) const {
+bool    Fixed::operator<(const Fixed &rhs) const {
 	return(_fixedPointValue < rhs.getRawBits());
 }
 
-bool    operator>=(const Fixed &rhs) const {
+bool    Fixed::operator>=(const Fixed &rhs) const {
 	return(_fixedPointValue >= rhs.getRawBits());
 }
 
-bool    operator<=(const Fixed&rhs) const {
+bool    Fixed::operator<=(const Fixed&rhs) const {
 	return(_fixedPointValue <= rhs.getRawBits());
 }
 
-bool    operator==(const Fixed &rhs) const {
+bool    Fixed::operator==(const Fixed &rhs) const {
 	return(_fixedPointValue == rhs.getRawBits());
 }
 
-bool    operator!=(const Fixed &rhs) const {
+bool    Fixed::operator!=(const Fixed &rhs) const {
 	return(_fixedPointValue != rhs.getRawBits());
 }
 
-Fixed   operator+(const Fixed &rhs) const {
+Fixed   Fixed::operator+(const Fixed &rhs) const {
 	return(Fixed(toFloat() + rhs.toFloat()));
 }
 
-Fixed   operator-(const Fixed &rhs) const {
+Fixed   Fixed::operator-(const Fixed &rhs) const {
 	return(Fixed(toFloat() - rhs.toFloat()));
 }
 
-Fixed   operator*(const Fixed &rhs) const {
+Fixed   Fixed::operator*(const Fixed &rhs) const {
 	return(Fixed(toFloat() * rhs.toFloat()));
 }
 
-Fixed   operator/(const Fixed &rhs) const {
+Fixed   Fixed::operator/(const Fixed &rhs) const {
 	return(Fixed(toFloat() / rhs.toFloat()));
 }
 
-Fixed&  operator++(void) { //pre increment
+Fixed&  Fixed::operator++(void) { //pre increment
 	_fixedPointValue++;
     return *this;
 }
 
-Fixed   operator++(int) { //ppost-increment
+Fixed   Fixed::operator++(int) { //post-increment
 	Fixed tmp(*this);
     operator++();
     return tmp;
 }
 
-Fixed&  operator--(void) { //pre-decrement
+Fixed&  Fixed::operator--(void) { //pre-decrement
 	_fixedPointValue--;
 	return *this;
 }
 
-Fixed   operator--(int) { // post-decrement
+Fixed   Fixed::operator--(int) { // post-decrement
 	Fixed tmp(*this);
-	operator--; //decrement current object, but return a copy.
+	operator--(); //decrement current object, but return a copy.
 	return(tmp);
 }
 /*Note that the second overload takes an extra int parameter, which is not used in the function.
@@ -117,22 +117,18 @@ Fixed   operator--(int) { // post-decrement
  the signature of the post-decrement operator needs to be different from the pre-decrement operator
   in order to overload both of them.*/
 
-Fixed&  Fixed::min(Fixed &a, Fixed &b)
-{
+Fixed&  Fixed::min(Fixed &a, Fixed &b){
     return (a < b ? a : b);
 }
 
-Fixed& Fixed::max(Fixed &a, Fixed &b)
-{
+Fixed& Fixed::max(Fixed &a, Fixed &b){
     return (a > b ? a : b);
 }
 
-const Fixed&  Fixed::min(const Fixed &a, const Fixed &b)
-{
+const Fixed&  Fixed::min(const Fixed &a, const Fixed &b){
     return (a < b ? a : b);
 }
 
-const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
-{
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b){
     return (a > b ? a : b);
 }
